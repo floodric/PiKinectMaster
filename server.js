@@ -9,19 +9,28 @@ var express = require('express'),
     net = require('net');
 
 var app = express();
+var piOnline = false;
+
 
 var server = net.createServer(function(c){
   counter = 0;
   console.log('server connected');
   c.on('end',function(){
     console.log('server disconnected');
+    piOnline = false;
   });
   c.on('data', function(data){
-    console.log(data);
-    c.write('let me show you right now fore you give it up');
+    console.log(data.toString());
+    console.log(typeof(data));
     if(counter++ == 5){
-      c.end('hell give us what we want');
+      c.end('let me show you right now fore you give it up');
+    } else {
+      c.write('let me show you right now fore you give it up');
     }
+  });
+  c.on('error',function(error){
+    console.error(error);
+    console.error(error.stack);
   });
 });
 
