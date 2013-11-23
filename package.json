@@ -1,0 +1,14 @@
+{
+  "name": "TalkToPi",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "node app"
+  },
+  "dependencies": {
+    "express": "*",
+    "socket.io": "*",
+    "consolidate": "*",
+    "ejs": "*",
+    "html":"*"
+  }
+}
